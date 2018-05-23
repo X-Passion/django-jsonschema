@@ -40,14 +40,14 @@ class FormToJsonSchemaTestCase(unittest.TestCase):
 
     def test_convert_form(self):
         form_repr = self.encoder.convert_form(TestForm)
-        print form_repr
+        print(form_repr)
         try:
             check_schema(form_repr)
         except Exception as error:
-            print error.message
-            print error.path
-            print error.validator
-            print error.cause
+            print(error.message)
+            print(error.path)
+            print(error.validator)
+            print(error.cause)
             raise
         instance_form_repr = self.encoder.convert_form(TestForm())
         check_schema(instance_form_repr)

@@ -25,7 +25,7 @@ class DjangoFormToJSONSchema(object):
         if not inspect.isclass(form) and hasattr(form, 'fields'):
             fields = form.fields
 
-        for name, field in fields.iteritems():
+        for name, field in fields.items():
             json_schema['properties'][name] = self.convert_formfield(name, field, json_schema)
             if field.required:
                 json_schema['required'].append(name)
@@ -97,7 +97,7 @@ class DocKitSchemaToJSONSchema(DjangoFormToJSONSchema):
                 'type':'object',
                 'properties':{}, #TODO SortedDict
             }
-        for key, field in dockit_schema._meta.fields.iteritems():
+        for key, field in dockit_schema._meta.fields.items():
             json_schema['properties'][key] = self.convert_dockitfield(key, field, json_schema)
         return json_schema
 
